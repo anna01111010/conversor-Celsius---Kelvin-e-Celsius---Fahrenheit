@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+void converteFahrenheit(float termo);
+void converteKelvin(float termo);
+
+int main(){
+    float termo;
+    int escolha, escala, resConta;
+
+        printf("Essa e um conversor de escalas termometricas\n");
+
+        while(escolha != 3){
+            printf("\nestao disponiveis as seguintes opcoes:\n");
+            printf("1- converter temperatura\n");
+            printf("2- ver conta de conversao\n");
+            printf("3- sair\n");
+            printf("O que gostaria de fazer?: \n");
+            scanf("%d", &escolha);
+
+            switch (escolha)
+            {
+            case 1:
+                printf("insira o valor na escala original: ");
+                scanf("%f", &termo);
+                printf("\nutilizando esses codigos:\n");
+                printf("1- Kelvin\n");
+                printf("2- Fahrenheit\n");
+                printf("insira a escala desejada: ");
+                scanf("%d", &escala);
+
+                if(escala == 1){
+                    converteKelvin(termo);
+                } else if(escala == 2){
+                    converteFahrenheit(termo);
+                }
+                break;
+            
+            case 2:
+                printf("\n1- celsius - kelvin\n");
+                printf("2- celsius - fahrenheit\n");
+                printf("\nqual conversao deseja visualizar?: ");
+                scanf("%d", &resConta);
+
+                if(resConta == 1){
+                    printf("\nformula: K = C + 273\n");
+                    printf("onde K representa o valor em Kelvin, C em Celsius.\n");
+                    printf("basta adicionar 273 ao valor possuido em graus Celsius.");
+                } else if(resConta == 2){
+                    printf("formula: F = C x 1,8 + 32\n");
+                    printf("onde F representa o valor em Fahrenheit e C o valor em Celsius.\n");
+                    printf("basta multiplicar o valor em Celsius por 1,8 e somar 32.\n");
+                }
+            break;
+            
+            default:
+                break;
+            }
+        }
+
+    return 0;
+}
+
+void converteFahrenheit(float termo){
+    float termoFah = (termo * 1.8) + 32;
+    printf("\nem Fahrenheit o valor termico fica: %.2f", termoFah);
+}
+void converteKelvin(float termo){
+    float termoK = termo + 273;
+    printf("\nem Kelvin o valor termico fica: %.2f", termoK);
+}
